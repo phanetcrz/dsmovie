@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class Score {
 
 	@EmbeddedId
-	private ScorePK id = new ScorePK(); 
+	private ScorePK id = new ScorePK(); //-- instanciando a classe scorePK na classe Score
 	
 	private Double value;
 	
