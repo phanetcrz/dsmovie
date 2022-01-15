@@ -7,7 +7,7 @@ import { BASE_URL } from "utils/requests";
 
 function Listing() {
     //forma Correta
-    const [pageNumber, setpageNumber] = useState(0);
+    const [pageNumber, setPageNumber] = useState(0);
 
     const [page, setPage] = useState<MoviePage>({    //--ESTADO QUE GUARDA A PÁGINA NA REQUISIÇÃO
         content: [],
@@ -22,7 +22,7 @@ function Listing() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/movies?size=12&page=${pageNumber},&sort=id`)  //desta forma ele faz a requisição duas vezes e o &sort=id garante que a busca será ordenada pelo titulo, pode usar o id e outros
+        axios.get(`${BASE_URL}/movies?size=12&page=${pageNumber}&sort=id`)  //desta forma ele faz a requisição duas vezes e o &sort=id garante que a busca será ordenada pelo titulo, pode usar o id e outros
             .then(response => {
                 const data = response.data as MoviePage;
                 setPage(data);
@@ -38,9 +38,13 @@ function Listing() {
     //         setpageNumber(data.number);
     //     })
 
+    const handlePageChange = ( newPageNumber : number) => { //--função que vai mudar a página
+        setPageNumber(newPageNumber);
+    }    
+
     return (
         <>
-            <Pagination />
+            <Pagination page={page} onChange={handlePageChange} />
 
             <div className="containet">
                 <div className="row">
