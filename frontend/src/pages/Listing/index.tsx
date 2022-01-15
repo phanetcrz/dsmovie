@@ -22,7 +22,7 @@ function Listing() {
     });
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/movies?size=12&page=${pageNumber},&sort=title`)  //desta forma ele faz a requisição duas vezes e o &sort=id garante que a busca será ordenada pelo titulo, pode usar o id e outros
+        axios.get(`${BASE_URL}/movies?size=12&page=${pageNumber},&sort=id`)  //desta forma ele faz a requisição duas vezes e o &sort=id garante que a busca será ordenada pelo titulo, pode usar o id e outros
             .then(response => {
                 const data = response.data as MoviePage;
                 setPage(data);
